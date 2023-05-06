@@ -2,6 +2,8 @@ import Head from 'next/head';
 import ArrowUpOnSquareIcon from '@heroicons/react/24/solid/ArrowUpOnSquareIcon';
 import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
 import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
+import { OverviewLatestOrders } from 'src/sections/overview/overview-latest-orders';
+
 import {
   Box,
   Button,
@@ -16,62 +18,12 @@ import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { CompanyCard } from 'src/sections/companies/company-card';
 import { CompaniesSearch } from 'src/sections/companies/companies-search';
 
-const companies = [
-  {
-    id: '2569ce0d517a7f06d3ea1f24',
-    createdAt: '27/03/2019',
-    description: 'Dropbox is a file hosting service that offers cloud storage, file synchronization, a personal cloud.',
-    logo: '/assets/logos/logo-dropbox.png',
-    title: 'Dropbox',
-    downloads: '594'
-  },
-  {
-    id: 'ed2b900870ceba72d203ec15',
-    createdAt: '31/03/2019',
-    description: 'Medium is an online publishing platform developed by Evan Williams, and launched in August 2012.',
-    logo: '/assets/logos/logo-medium.png',
-    title: 'Medium Corporation',
-    downloads: '625'
-  },
-  {
-    id: 'a033e38768c82fca90df3db7',
-    createdAt: '03/04/2019',
-    description: 'Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.',
-    logo: '/assets/logos/logo-slack.png',
-    title: 'Slack',
-    downloads: '857'
-  },
-  {
-    id: '1efecb2bf6a51def9869ab0f',
-    createdAt: '04/04/2019',
-    description: 'Lyft is an on-demand transportation company based in San Francisco, California.',
-    logo: '/assets/logos/logo-lyft.png',
-    title: 'Lyft',
-    downloads: '406'
-  },
-  {
-    id: '1ed68149f65fbc6089b5fd07',
-    createdAt: '04/04/2019',
-    description: 'GitHub is a web-based hosting service for version control of code using Git.',
-    logo: '/assets/logos/logo-github.png',
-    title: 'GitHub',
-    downloads: '835'
-  },
-  {
-    id: '5dab321376eff6177407e887',
-    createdAt: '04/04/2019',
-    description: 'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
-    logo: '/assets/logos/logo-squarespace.png',
-    title: 'Squarespace',
-    downloads: '835'
-  }
-];
 
 const Page = () => (
   <>
     <Head>
       <title>
-        Companies | admin
+        Orders | admin
       </title>
     </Head>
     <Box
@@ -90,7 +42,7 @@ const Page = () => (
           >
             <Stack spacing={1}>
               <Typography variant="h4">
-                Companies
+                Orders
               </Typography>
               <Stack
                 alignItems="center"
@@ -105,7 +57,7 @@ const Page = () => (
                     </SvgIcon>
                   )}
                 >
-                  Import
+                  delete
                 </Button>
                 <Button
                   color="inherit"
@@ -120,16 +72,7 @@ const Page = () => (
               </Stack>
             </Stack>
             <div>
-              <Button
-                startIcon={(
-                  <SvgIcon fontSize="small">
-                    <PlusIcon />
-                  </SvgIcon>
-                )}
-                variant="contained"
-              >
-                Add
-              </Button>
+             
             </div>
           </Stack>
           <CompaniesSearch />
@@ -137,16 +80,77 @@ const Page = () => (
             container
             spacing={3}
           >
-            {companies.map((company) => (
-              <Grid
-                xs={12}
-                md={6}
-                lg={4}
-                key={company.id}
-              >
-                <CompanyCard company={company} />
-              </Grid>
-            ))}
+            <Grid
+            xs={12}
+            md={12}
+            lg={16}
+          >
+            <OverviewLatestOrders
+              orders={[
+                {
+                  id: 'f69f88012978187a6c12897f',
+                  ref: 'DEV1049',
+                  amount: 30.5,
+                  customer: {
+                    name: 'Ekaterina Tankova'
+                  },
+                  createdAt: 1555016400000,
+                  status: 'pending'
+                },
+                {
+                  id: '9eaa1c7dd4433f413c308ce2',
+                  ref: 'DEV1048',
+                  amount: 25.1,
+                  customer: {
+                    name: 'Cao Yu'
+                  },
+                  createdAt: 1555016400000,
+                  status: 'delivered'
+                },
+                {
+                  id: '01a5230c811bd04996ce7c13',
+                  ref: 'DEV1047',
+                  amount: 10.99,
+                  customer: {
+                    name: 'Alexa Richardson'
+                  },
+                  createdAt: 1554930000000,
+                  status: 'refunded'
+                },
+                {
+                  id: '1f4e1bd0a87cea23cdb83d18',
+                  ref: 'DEV1046',
+                  amount: 96.43,
+                  customer: {
+                    name: 'Anje Keizer'
+                  },
+                  createdAt: 1554757200000,
+                  status: 'pending'
+                },
+                {
+                  id: '9f974f239d29ede969367103',
+                  ref: 'DEV1045',
+                  amount: 32.54,
+                  customer: {
+                    name: 'Clarke Gillebert'
+                  },
+                  createdAt: 1554670800000,
+                  status: 'delivered'
+                },
+                {
+                  id: 'ffc83c1560ec2f66a1c05596',
+                  ref: 'DEV1044',
+                  amount: 16.76,
+                  customer: {
+                    name: 'Adam Denisov'
+                  },
+                  createdAt: 1554670800000,
+                  status: 'delivered'
+                }
+              ]}
+              sx={{ height: '100%' }}
+            />
+          </Grid>
           </Grid>
           <Box
             sx={{
